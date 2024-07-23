@@ -31,7 +31,7 @@ const AppRoutes = ({ role, setRole }) => {
       <Route path='/dashboard' element={<Dashboard />} />
 
       {/* Ajoutez vos autres routes existantes */}
-      <Route path='/Fournisseurs' element={<Fournisseurs />} />
+      <Route path='/dashboard/Fournisseurs' element={<Fournisseurs />} />
       <Route path='/MatierPremier' element={<MatierPremier />} />
       <Route path='/Societe' element={<Societe />} />
       <Route path='/Concurrents' element={<Concurrents />} />
