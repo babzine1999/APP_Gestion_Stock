@@ -33,7 +33,7 @@ export class ProductionsNT extends Component {
   }
 
   refreshList() {
-    axios.get('https://192.168.1.20:5000/api/ProductionNT') 
+    axios.get('https://192.168.1.249:5000/api/ProductionNT') 
       .then(response => {
         this.setState({ productions: response.data, productionsWithoutFilter: response.data });
       })
@@ -43,7 +43,7 @@ export class ProductionsNT extends Component {
   }
 
   loadSocietes() {
-    axios.get('https://192.168.1.20:5000/api/Societe')
+    axios.get('https://192.168.1.249:5000/api/Societe')
       .then(response => {
         this.setState({ societes: response.data });
       })
@@ -138,7 +138,7 @@ export class ProductionsNT extends Component {
       return;
     }
 
-    axios.post('https://192.168.1.20:5000/api/ProductionNT', {
+    axios.post('https://192.168.1.249:5000/api/ProductionNT', {
       dateProduction: this.state.dateProduction,
       idSociete: this.state.idSociete,
       color: this.state.color,
@@ -164,7 +164,7 @@ export class ProductionsNT extends Component {
       return;
     }
 
-    axios.put(`https://192.168.1.20:5000/api/ProductionNT/${this.state.idProduction}`, {
+    axios.put(`https://192.168.1.249:5000/api/ProductionNT/${this.state.idProduction}`, {
       idProduction: this.state.idProduction,
       dateProduction: this.state.dateProduction,
       idSociete: this.state.idSociete,
@@ -187,7 +187,7 @@ export class ProductionsNT extends Component {
 
   deleteClick(id) {
     if (window.confirm('Are you sure?')) {
-      axios.delete(`https://192.168.1.20:5000/api/ProductionNT/${id}`)
+      axios.delete(`https://192.168.1.249:5000/api/ProductionNT/${id}`)
         .then(response => {
           if (response.status === 200 || response.status === 204) {
             alert('Production deleted successfully');

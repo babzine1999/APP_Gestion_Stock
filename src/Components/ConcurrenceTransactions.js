@@ -45,7 +45,7 @@ export class ConcurrenceTransactions extends Component {
   }
 
   refreshList() {
-    axios.get('https://192.168.1.20:5000/api/ConcurrenceTransactions')
+    axios.get('https://192.168.1.249:5000/api/ConcurrenceTransactions')
       .then(response => {
         const pageCount = Math.ceil(response.data.length / this.state.itemsPerPage);
         const currentItems = response.data.slice(this.state.itemOffset, this.state.itemOffset + this.state.itemsPerPage);
@@ -64,7 +64,7 @@ export class ConcurrenceTransactions extends Component {
   }
 
   loadConcurrents() {
-    axios.get('https://192.168.1.20:5000/api/Concurrents')
+    axios.get('https://192.168.1.249:5000/api/Concurrents')
       .then(response => {
         this.setState({ concurrents: response.data });
       })
@@ -74,7 +74,7 @@ export class ConcurrenceTransactions extends Component {
   }
 
   loadSubCategories() {
-    axios.get('https://192.168.1.20:5000/api/SubCategoryMatierPremier')
+    axios.get('https://192.168.1.249:5000/api/SubCategoryMatierPremier')
       .then(response => {
         this.setState({ subcategories: response.data });
       })
@@ -173,7 +173,7 @@ export class ConcurrenceTransactions extends Component {
       return;
     }
 
-    axios.post('https://192.168.1.20:5000/api/ConcurrenceTransactions', {
+    axios.post('https://192.168.1.249:5000/api/ConcurrenceTransactions', {
       date: this.state.date,
       idSubCategory: this.state.idSubCategory,
       idConcurrent: this.state.idConcurrent,
@@ -204,7 +204,7 @@ export class ConcurrenceTransactions extends Component {
       return;
     }
 
-    axios.put(`https://192.168.1.20:5000/api/ConcurrenceTransactions/${this.state.id}`, {
+    axios.put(`https://192.168.1.249:5000/api/ConcurrenceTransactions/${this.state.id}`, {
       idTransaction: this.state.id,
       date: this.state.date,
       idSubCategory: this.state.idSubCategory,
@@ -232,7 +232,7 @@ export class ConcurrenceTransactions extends Component {
 
   deleteClick(id) {
     if (window.confirm('Are you sure?')) {
-      axios.delete(`https://192.168.1.20:5000/api/ConcurrenceTransactions/${id}`)
+      axios.delete(`https://192.168.1.249:5000/api/ConcurrenceTransactions/${id}`)
         .then(response => {
           if (response.status === 200 || response.status === 204) {
             alert('Transaction deleted successfully');

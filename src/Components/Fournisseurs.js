@@ -34,7 +34,7 @@ export class Fournisseurs extends Component {
   }
 
   refreshList() {
-    axios.get('https://192.168.1.20:5000/api/Fournisseurs')
+    axios.get('https://192.168.1.249:5000/api/Fournisseurs')
       .then(response => {
         const pageCount = Math.ceil(response.data.length / this.state.itemsPerPage);
         const currentItems = response.data.slice(this.state.itemOffset, this.state.itemOffset + this.state.itemsPerPage);
@@ -148,7 +148,7 @@ export class Fournisseurs extends Component {
       return;
     }
 
-    axios.post('https://192.168.1.20:5000/api/Fournisseurs', {
+    axios.post('https://192.168.1.249:5000/api/Fournisseurs', {
       nomFournisseur: this.state.nomFournisseur,
       adress: this.state.adress,
       contact: this.state.contact
@@ -172,7 +172,7 @@ export class Fournisseurs extends Component {
       return;
     }
 
-    axios.put(`https://192.168.1.20:5000/api/Fournisseurs/${this.state.idFournisseur}`, {
+    axios.put(`https://192.168.1.249:5000/api/Fournisseurs/${this.state.idFournisseur}`, {
       idFournisseur: this.state.idFournisseur,
       nomFournisseur: this.state.nomFournisseur,
       adress: this.state.adress,
@@ -193,7 +193,7 @@ export class Fournisseurs extends Component {
 
   deleteClick(idFournisseur) {
     if (window.confirm('Êtes-vous sûr?')) {
-      axios.delete(`https://192.168.1.20:5000/api/Fournisseurs/${idFournisseur}`)
+      axios.delete(`https://192.168.1.249:5000/api/Fournisseurs/${idFournisseur}`)
         .then(response => {
           if (response.status === 200 || response.status === 204) {
             alert('Fournisseur supprimé avec succès');

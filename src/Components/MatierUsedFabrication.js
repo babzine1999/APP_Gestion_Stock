@@ -38,7 +38,7 @@ export class MatierUsedFabrication extends Component {
   }
 
   refreshList() {
-    axios.get('https://192.168.1.20:5000/api/MatierUsedFabrications')
+    axios.get('https://192.168.1.249:5000/api/MatierUsedFabrications')
       .then(response => {
         const pageCount = Math.ceil(response.data.length / this.state.itemsPerPage);
         const currentItems = response.data.slice(this.state.itemOffset, this.state.itemOffset + this.state.itemsPerPage);
@@ -54,7 +54,7 @@ export class MatierUsedFabrication extends Component {
   }
 
   loadSocietes() {
-    axios.get('https://192.168.1.20:5000/api/Societe')
+    axios.get('https://192.168.1.249:5000/api/Societe')
       .then(response => {
         this.setState({ societes: response.data });
       })
@@ -64,7 +64,7 @@ export class MatierUsedFabrication extends Component {
   }
 
   loadSubCategories() {
-    axios.get('https://192.168.1.20:5000/api/SubCategoryMatierPremier')
+    axios.get('https://192.168.1.249:5000/api/SubCategoryMatierPremier')
       .then(response => {
         this.setState({ subcategories: response.data, subcategoriesWithoutFilter: response.data });
       })
@@ -156,7 +156,7 @@ export class MatierUsedFabrication extends Component {
       return;
     }
 
-    axios.post('https://192.168.1.20:5000/api/MatierUsedFabrications', {
+    axios.post('https://192.168.1.249:5000/api/MatierUsedFabrications', {
       date: this.state.date,
       idSociete: this.state.idSociete,
       idSubCategory: this.state.idSubCategory,
@@ -182,7 +182,7 @@ export class MatierUsedFabrication extends Component {
       return;
     }
 
-    axios.put(`https://192.168.1.20:5000/api/MatierUsedFabrications/${this.state.idFab}`, {
+    axios.put(`https://192.168.1.249:5000/api/MatierUsedFabrications/${this.state.idFab}`, {
       idFab: this.state.idFab,
       date: this.state.date,
       idSociete: this.state.idSociete,
@@ -205,7 +205,7 @@ export class MatierUsedFabrication extends Component {
 
   deleteClick = (idFab) => {
     if (window.confirm('Are you sure?')) {
-      axios.delete(`https://192.168.1.20:5000/api/MatierUsedFabrications/${idFab}`)
+      axios.delete(`https://192.168.1.249:5000/api/MatierUsedFabrications/${idFab}`)
         .then(response => {
           if (response.status === 200 || response.status === 204) {
             alert('MatierUsedFabrication deleted successfully');

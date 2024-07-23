@@ -39,7 +39,7 @@ export class Achats extends Component {
   }
 
   refreshList() {
-    axios.get('https://192.168.1.20:5000/api/Achats')
+    axios.get('https://192.168.1.249:5000/api/Achats')
       .then(response => {
         const pageCount = Math.ceil(response.data.length / this.state.itemsPerPage);
         const currentItems = response.data.slice(this.state.itemOffset, this.state.itemOffset + this.state.itemsPerPage);
@@ -56,7 +56,7 @@ export class Achats extends Component {
   }
 
   loadSubCategories() {
-    axios.get('https://192.168.1.20:5000/api/SubCategoryMatierPremier')
+    axios.get('https://192.168.1.249:5000/api/SubCategoryMatierPremier')
       .then(response => {
         this.setState({ subcategories: response.data });
       })
@@ -66,7 +66,7 @@ export class Achats extends Component {
   }
 
   loadFournisseurs() {
-    axios.get('https://192.168.1.20:5000/api/Fournisseurs')
+    axios.get('https://192.168.1.249:5000/api/Fournisseurs')
       .then(response => {
         this.setState({ fournisseurs: response.data });
       })
@@ -143,7 +143,7 @@ export class Achats extends Component {
       return;
     }
 
-    axios.post('https://192.168.1.20:5000/api/Achats', {
+    axios.post('https://192.168.1.249:5000/api/Achats', {
       achatDate: this.state.achatDate,
       idSubCategory: this.state.idSubCategory,
       idFournisseur: this.state.idFournisseur,
@@ -170,7 +170,7 @@ export class Achats extends Component {
       return;
     }
 
-    axios.put(`https://192.168.1.20:5000/api/Achats/${this.state.idAchat}`, {
+    axios.put(`https://192.168.1.249:5000/api/Achats/${this.state.idAchat}`, {
       idAchat: this.state.idAchat,
       achatDate: this.state.achatDate,
       idSubCategory: this.state.idSubCategory,
@@ -194,7 +194,7 @@ export class Achats extends Component {
 
   deleteClick(id) {
     if (window.confirm('Are you sure?')) {
-      axios.delete(`https://192.168.1.20:5000/api/Achats/${id}`)
+      axios.delete(`https://192.168.1.249:5000/api/Achats/${id}`)
         .then(response => {
           if (response.status === 200 || response.status === 204) {
             alert('Achats deleted successfully');

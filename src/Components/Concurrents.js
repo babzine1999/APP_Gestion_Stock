@@ -34,7 +34,7 @@ export class Concurrents extends Component {
   }
 
   refreshList() {
-    axios.get('https://192.168.1.20:5000/api/Concurrents')
+    axios.get('https://192.168.1.249:5000/api/Concurrents')
       .then(response => {
         const pageCount = Math.ceil(response.data.length / this.state.itemsPerPage);
         const currentItems = response.data.slice(this.state.itemOffset, this.state.itemOffset + this.state.itemsPerPage);
@@ -150,7 +150,7 @@ export class Concurrents extends Component {
       return;
     }
 
-    axios.post('https://192.168.1.20:5000/api/Concurrents', {
+    axios.post('https://192.168.1.249:5000/api/Concurrents', {
       fullName: this.state.fullName,
       adress: this.state.adress,
       contact: this.state.contact
@@ -174,7 +174,7 @@ export class Concurrents extends Component {
       return;
     }
 
-    axios.put(`https://192.168.1.20:5000/api/Concurrents/${this.state.idConcurrent}`, {
+    axios.put(`https://192.168.1.249:5000/api/Concurrents/${this.state.idConcurrent}`, {
       idConcurrent: this.state.idConcurrent,
       fullName: this.state.fullName,
       adress: this.state.adress,
@@ -195,7 +195,7 @@ export class Concurrents extends Component {
 
   deleteClick(idConcurrent) {
     if (window.confirm('Êtes-vous sûr?')) {
-      axios.delete(`https://192.168.1.20:5000/api/Concurrents/${idConcurrent}`)
+      axios.delete(`https://192.168.1.249:5000/api/Concurrents/${idConcurrent}`)
         .then(response => {
           if (response.status === 200) {
             alert('Concurrent supprimé avec succès');

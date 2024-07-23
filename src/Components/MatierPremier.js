@@ -29,7 +29,7 @@ export class MatierPremier extends Component {
   }
 
   refreshList() {
-    axios.get('https://192.168.1.20:5000/api/MatierPremier')
+    axios.get('https://192.168.1.249:5000/api/MatierPremier')
       .then(response => {
         const pageCount = Math.ceil(response.data.length / this.state.itemsPerPage);
         const currentItems = response.data.slice(this.state.itemOffset, this.state.itemOffset + this.state.itemsPerPage);
@@ -150,7 +150,7 @@ export class MatierPremier extends Component {
       return;
     }
 
-    axios.post('https://192.168.1.20:5000/api/MatierPremier', {
+    axios.post('https://192.168.1.249:5000/api/MatierPremier', {
       categoryName: this.capitalizeFirstLetter(this.state.DepartmentName),
       matiereType: this.capitalizeFirstLetter(this.state.matiereType)
     })
@@ -175,7 +175,7 @@ export class MatierPremier extends Component {
       return;
     }
 
-    axios.put(`https://192.168.1.20:5000/api/MatierPremier/${this.state.id}`, {
+    axios.put(`https://192.168.1.249:5000/api/MatierPremier/${this.state.id}`, {
       id: this.state.id,
       categoryName: this.capitalizeFirstLetter(this.state.DepartmentName),
       matiereType: this.capitalizeFirstLetter(this.state.matiereType)
@@ -195,7 +195,7 @@ export class MatierPremier extends Component {
 
   deleteClick(id) {
     if (window.confirm('Are you sure?')) {
-      axios.delete(`https://192.168.1.20:5000/api/MatierPremier/${id}`)
+      axios.delete(`https://192.168.1.249:5000/api/MatierPremier/${id}`)
         .then(response => {
           if (response.status === 200) {
             alert('MatierPremier deleted successfully');
