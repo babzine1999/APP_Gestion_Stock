@@ -15,7 +15,7 @@ const Login = ({ setRole }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://192.168.1.249:5000/api/Account/login', {
+      const response = await axios.post(''https://localhost:7230/api/Account/login', {
         username,
         password,
       });
