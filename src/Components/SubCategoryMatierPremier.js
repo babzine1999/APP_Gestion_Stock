@@ -34,7 +34,7 @@ export class SubCategoryMatierPremier extends Component {
   }
 
   refreshList() {
-    axios.get('https://192.168.1.249:5000/api/SubCategoryMatierPremier')
+    axios.get('https://localhost:7230/api/SubCategoryMatierPremier')
       .then(response => {
         const pageCount = Math.ceil(response.data.length / this.state.itemsPerPage);
         const currentItems = response.data.slice(this.state.itemOffset, this.state.itemOffset + this.state.itemsPerPage);
@@ -51,7 +51,7 @@ export class SubCategoryMatierPremier extends Component {
   }
 
   loadMatierPremiers() {
-    axios.get('https://192.168.1.249:5000/api/MatierPremier')
+    axios.get('https://localhost:7230/api/MatierPremier')
       .then(response => {
         this.setState({ matierPremiers: response.data });
       })
@@ -176,7 +176,7 @@ export class SubCategoryMatierPremier extends Component {
       return;
     }
 
-    axios.post('https://192.168.1.249:5000/api/SubCategoryMatierPremier', {
+    axios.post('https://localhost:7230/api/SubCategoryMatierPremier', {
       idMatierPremier: this.state.idMatierPremier,
       stock: this.state.stock,
       subcategoryName: this.state.subcategoryName
@@ -200,7 +200,7 @@ export class SubCategoryMatierPremier extends Component {
       return;
     }
 
-    axios.put(`https://192.168.1.249:5000/api/SubCategoryMatierPremier/${this.state.id}`, {
+    axios.put(`https://localhost:7230/api/SubCategoryMatierPremier/${this.state.id}`, {
       idSubcategory: this.state.id,
       idMatierPremier: this.state.idMatierPremier,
       stock: this.state.stock,
@@ -221,7 +221,7 @@ export class SubCategoryMatierPremier extends Component {
 
   deleteClick(id) {
     if (window.confirm('Are you sure?')) {
-      axios.delete(`https://192.168.1.249:5000/api/SubCategoryMatierPremier/${id}`)
+      axios.delete(`https://localhost:7230/api/SubCategoryMatierPremier/${id}`)
         .then(response => {
           if (response.status === 200 || response.status === 204) {
             alert('SubCategoryMatierPremier deleted successfully');
