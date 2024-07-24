@@ -19,7 +19,7 @@ export class Societe extends Component {
   }
 
   refreshList() {
-    axios.get('https://192.168.1.249:5000/api/Societe')
+    axios.get('https://localhost:7230/api/Societe')
       .then(response => {
         this.setState({ societes: response.data, societesWithoutFilter: response.data });
       })
